@@ -1,0 +1,147 @@
+#root {
+  width: 100%;
+}
+
+body {
+  background: #FC5C7D;
+  background: -webkit-linear-gradient(to bottom, #6A82FB, #FC5C7D);
+  background: linear-gradient(to bottom, #6A82FB, #FC5C7D);
+  max-height: 100dvh;
+  text-decoration-thickness: 0.01em;
+}
+
+#left-panel,
+#right-panel {
+  height: calc(100dvh - 2em);
+  background: rgba(255, 255, 255, 0.4);
+  margin: 1em;
+  border-radius: 0.5em;
+  padding: 1em;
+  backdrop-filter: blur(0.5em);
+}
+
+#left-panel {
+  min-width: 18em;
+}
+
+#right-panel {
+  width: calc(100% - 20em);
+  position: relative;
+}
+
+#list-panel {
+  flex: 2;
+}
+
+#detail-panel {
+  flex: 1;
+  padding: 2em;
+}
+
+#task {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
+#task.active-task {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+.common-group-list-wrapper {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 1em;
+}
+
+.group-list-wrapper {
+  overflow-y: auto;
+  margin-bottom: 1em;
+}
+
+.group-list {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-inline: 0.4em;
+  padding-block: 0.4em;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
+.group-list:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.group-list i {
+  padding-right: 1em;
+}
+
+.group-list.active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#task-group {
+  height: calc(100dvh - 18em);
+  overflow-y: auto;
+}
+
+#task-input {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+  padding: 2em;
+  position: sticky;
+  margin: 0.5em;
+  margin-top: 2em;
+  bottom: 0;
+  border-radius: 0.2em;
+}
+
+.hide {
+  display: none;
+}
+
+.title-area,
+.note-area {
+  width: 100%;
+  height: 120px;
+  word-break: break-all;
+  text-wrap: wrap;
+  background: none;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  resize: none;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.title-area {
+  font-size: 2em;
+  height: 250px;
+}
+
+
+.item-count {
+  height: 2em;
+  width: auto;
+  padding-inline: 1em;
+  display: flex;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.15);
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+}
+
+#task-detail {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1em;
+  margin-left: 1em;
+  border-radius: 0.2em;
+}
