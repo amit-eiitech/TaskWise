@@ -4,7 +4,7 @@ export interface Task {
   note: string;
   isComplete: boolean;
   isImportant: boolean;
-  taskList: number;
+  taskGroup: number;
 }
 
 export interface Group {

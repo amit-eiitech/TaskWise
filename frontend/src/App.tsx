@@ -42,8 +42,8 @@ class App extends Component<{}, State> {
   }
 
   //
-  // CREATE TASKS
-  createTask = (title: string, taskList: number | null) => {
+  // CREATE TASK
+  createTask = (title: string, taskGroup: number | null) => {
     const csrftoken = getCookie("csrftoken") || "";
     const url = "http://127.0.0.1:8000/api/create-task/";
     fetch(url, {
@@ -52,7 +52,7 @@ class App extends Component<{}, State> {
         "Content-type": "application/json",
         "X-CSRFToken": csrftoken,
       },
-      body: JSON.stringify({ title: title, taskList: taskList }),
+      body: JSON.stringify({ title: title, taskGroup: taskGroup }),
     }).then(() => {
       this.fetchTasks();
     });
@@ -155,6 +155,7 @@ class App extends Component<{}, State> {
   //
   // HANDLE CREATE TASK
   handleCreateTask = (title: string) => {
+    console.log(this.state.selectedGroup?.id);
     this.createTask(title, this.state.selectedGroup?.id || null);
   };
 
@@ -219,7 +220,9 @@ class App extends Component<{}, State> {
     const { tasks, selectedGroupName, selectedGroup } = this.state;
     if (selectedGroup !== null) {
       this.setState({
-        currentTasks: tasks.filter((task) => task.taskList == selectedGroup.id),
+        currentTasks: tasks.filter(
+          (task) => task.taskGroup == selectedGroup.id
+        ),
       });
     } else {
       if (selectedGroupName == "Important") {
@@ -258,7 +261,7 @@ class App extends Component<{}, State> {
       selectedGroup: group,
       selectedGroupName: group.name,
       currentTasks: this.state.tasks.filter(
-        (task) => task.taskList === group.id
+        (task) => task.taskGroup === group.id
       ),
     });
   };

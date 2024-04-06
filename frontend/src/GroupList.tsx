@@ -40,7 +40,7 @@ const GroupList: React.FC<Props> = ({
           <i className="bi bi-list"></i>
           <span className="fw-medium">{group.name}</span>
           <span className="item-count ms-auto">
-            {tasks.filter((task) => task.taskList === group.id).length}
+            {tasks.filter((task) => task.taskGroup === group.id).length}
           </span>
         </div>
       ))}
