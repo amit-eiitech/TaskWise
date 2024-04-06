@@ -33,7 +33,13 @@ class App extends Component<{}, State> {
   //
   // FETCH TASKS
   fetchTasks() {
-    var url = "http://127.0.0.1:8000/api/tasks/";
+    console.log(process.env.NODE_ENV);
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = "https://taskwise.azurewebsites.net/api/tasks/";
+    } else {
+      url = "http://127.0.0.1:8000/api/tasks/";
+    }
     fetch(url)
       .then((response) => response.json())
       .then((data: Task[]) => {
@@ -44,8 +50,14 @@ class App extends Component<{}, State> {
   //
   // CREATE TASK
   createTask = (title: string, taskGroup: number | null) => {
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = "https://taskwise.azurewebsites.net/api/create-task/";
+    } else {
+      url = "http://127.0.0.1:8000/api/create-task/";
+    }
     const csrftoken = getCookie("csrftoken") || "";
-    const url = "http://127.0.0.1:8000/api/create-task/";
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -61,8 +73,14 @@ class App extends Component<{}, State> {
   //
   // DELETE TASK
   deleteTask = (id: number) => {
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = `https://taskwise.azurewebsites.net/api/delete-task/${id}`;
+    } else {
+      url = `http://127.0.0.1:8000/api/delete-task/${id}`;
+    }
     const csrftoken = getCookie("csrftoken") || "";
-    const url = `http://127.0.0.1:8000/api/delete-task/${id}/`;
+
     fetch(url, {
       method: "DELETE",
       headers: {
@@ -76,8 +94,14 @@ class App extends Component<{}, State> {
   //
   // UPDATE TASK
   updateTask = (task: Task) => {
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = `https://taskwise.azurewebsites.net/api/update-task/${task.id}/`;
+    } else {
+      url = `http://127.0.0.1:8000/api/update-task/${task.id}/`;
+    }
     const csrftoken = getCookie("csrftoken") || "";
-    const url = `http://127.0.0.1:8000/api/update-task/${task.id}/`;
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -93,7 +117,13 @@ class App extends Component<{}, State> {
   //
   // FETCH GROUPS
   fetchGroups() {
-    const url = "http://127.0.0.1:8000/api/groups/";
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = "https://taskwise.azurewebsites.net/api/groups/";
+    } else {
+      url = "http://127.0.0.1:8000/api/groups/";
+    }
+
     fetch(url)
       .then((response) => response.json())
       .then((data: Group[]) => this.setState({ groups: data }));
@@ -102,8 +132,14 @@ class App extends Component<{}, State> {
   //
   // CREATE GROUP
   createGroup = (name: string) => {
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = "https://taskwise.azurewebsites.net/api/create-group/";
+    } else {
+      url = "http://127.0.0.1:8000/api/create-group/";
+    }
     const csrftoken = getCookie("csrftoken") || "";
-    const url = "http://127.0.0.1:8000/api/create-group/";
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -119,8 +155,14 @@ class App extends Component<{}, State> {
   //
   // DELETE GROUP
   deleteGroup = (id: number) => {
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = `https://taskwise.azurewebsites.net/api/delete-group/${id}/`;
+    } else {
+      url = `http://127.0.0.1:8000/api/delete-group/${id}/`;
+    }
     const csrftoken = getCookie("csrftoken") || "";
-    const url = `http://127.0.0.1:8000/api/delete-group/${id}/`;
+
     fetch(url, {
       method: "DELETE",
       headers: {
@@ -136,8 +178,14 @@ class App extends Component<{}, State> {
   //
   // UPDATE GROUP
   updateGroup = (group: Group) => {
+    let url = "";
+    if (process.env.NODE_ENV === "production") {
+      url = `https://taskwise.azurewebsites.net/api/update-group/${group.id}/`;
+    } else {
+      url = `http://127.0.0.1:8000/api/update-group/${group.id}/`;
+    }
     const csrftoken = getCookie("csrftoken") || "";
-    const url = `http://127.0.0.1:8000/api/update-group/${group.id}/`;
+
     fetch(url, {
       method: "POST",
       headers: {
