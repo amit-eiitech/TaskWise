@@ -27,6 +27,7 @@ SECRET_KEY = "django-insecure-xf&y2fr9p4$7irw5na2js#8ys6m#b8v=ob5_&te9%kx2_hhtcm
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "taskwise.azurewebsites.net",
     "127.0.0.1",
 ]
 
